@@ -1,0 +1,100 @@
+/* Conteneur principal de la navbar */
+.navbar {
+    display: flex
+    ;
+        justify-content: space-between;
+        align-items: center;
+      
+        font-family: Arial, sans-serif;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        height: 73px;
+        position: fixed;
+        top: 0;
+
+        right: 105px;
+        width: 81%;
+        z-index: 1000;
+        margin: 69px 0 0 445px;
+        border-radius: 10px;
+}
+
+
+.navbar-left h1 {
+    font-size: 1.5rem;
+    color: #6c42be;
+    margin: 0;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.subtext {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+}
+
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.date {
+    font-size: 1rem;
+    color: #333;
+}
+
+.search-container {
+    position: relative;
+}
+
+.search-input {
+    padding: 5px 10px;
+
+    border-radius: 15px;
+    outline: none;
+    width: 150px;
+    transition: width 0.3s ease-in-out;
+}
+
+.search-input:focus {
+    width: 200px;
+}
+
+/* Section droite : Informations utilisateur et icônes */
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* Espacement entre les éléments */
+}
+
+.user-info {
+    text-align: right;
+}
+
+.user-name {
+    font-size: 1rem;
+    color: #333;
+}
+
+.user-status {
+    font-size: 0.8rem;
+    color: #6c42be;
+}
+
+.icon {
+    font-size: 1.2rem;
+    color: #6c42be;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.icon:hover {
+    color: #4a2880;
+    /* Couleur au survol */
+}

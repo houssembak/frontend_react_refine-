@@ -2,6 +2,11 @@ import { ErrorComponent, GitHubBanner, Refine } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
+import Sidebar from "./components/sidebar/Sidebar";
+import Navbar from "./components/navbar/navbar";
+import Profile from "./components/profile/Profile";
+import Projet from "./components/project/Projet";
+
 import routerBindings, {
   DocumentTitleHandler,
   NavigateToResource,
@@ -10,19 +15,6 @@ import routerBindings, {
 import dataProvider from "@refinedev/simple-rest";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Layout } from "./components/layout";
-import {
-  BlogPostCreate,
-  BlogPostEdit,
-  BlogPostList,
-  BlogPostShow,
-} from "./pages/blog-posts";
-import {
-  CategoryCreate,
-  CategoryEdit,
-  CategoryList,
-  CategoryShow,
-} from "./pages/categories";
 
 function App() {
   return (
@@ -31,65 +23,30 @@ function App() {
       <RefineKbarProvider>
         <DevtoolsProvider>
           <Refine
-            dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+            // dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
             routerProvider={routerBindings}
-            resources={[
-              {
-                name: "blog_posts",
-                list: "/blog-posts",
-                create: "/blog-posts/create",
-                edit: "/blog-posts/edit/:id",
-                show: "/blog-posts/show/:id",
-                meta: {
-                  canDelete: true,
-                },
-              },
-              {
-                name: "categories",
-                list: "/categories",
-                create: "/categories/create",
-                edit: "/categories/edit/:id",
-                show: "/categories/show/:id",
-                meta: {
-                  canDelete: true,
-                },
-              },
-            ]}
-            options={{
-              syncWithLocation: true,
-              warnWhenUnsavedChanges: true,
-              useNewQueryKeys: true,
-              projectId: "w1BlI0-ZYDPL1-QIJ6bk",
-            }}
+            resources={[]}
+          // options={{
+          //   syncWithLocation: true,
+          //   warnWhenUnsavedChanges: true,
+          //   useNewQueryKeys: true,
+          //   projectId: "w1BlI0-ZYDPL1-QIJ6bk",
+          // }}
           >
-            <Routes>
-              <Route
-                element={
-                  <Layout>
-                    <Outlet />
-                  </Layout>
-                }
-              >
-                <Route
-                  index
-                  element={<NavigateToResource resource="blog_posts" />}
-                />
-                <Route path="/blog-posts">
-                  <Route index element={<BlogPostList />} />
-                  <Route path="create" element={<BlogPostCreate />} />
-                  <Route path="edit/:id" element={<BlogPostEdit />} />
-                  <Route path="show/:id" element={<BlogPostShow />} />
-                </Route>
-                <Route path="/categories">
-                  <Route index element={<CategoryList />} />
-                  <Route path="create" element={<CategoryCreate />} />
-                  <Route path="edit/:id" element={<CategoryEdit />} />
-                  <Route path="show/:id" element={<CategoryShow />} />
-                </Route>
-                <Route path="*" element={<ErrorComponent />} />
-              </Route>
-            </Routes>
-
+            {/* Conteneur global */}
+            <div className="app-container">
+              <Navbar /> {/* Inclusion de la barre de navigation */}
+              <div className="main-layout">
+                <Sidebar /> {/* Inclusion de la barre latérale */}
+                <div className="content">
+                  <Routes>
+                    <Route path="/" element={<NavigateToResource resource="profile" />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="/projet" element={<Projet />} />
+                  </Routes>
+                </div>
+              </div>
+            </div>
             <RefineKbar />
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />

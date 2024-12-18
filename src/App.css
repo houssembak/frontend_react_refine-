@@ -87,3 +87,20 @@ td:last-child {
 .menu ul {
   padding-left: 16px;
 }
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.main-layout {
+  display: flex;
+  flex: 1;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
